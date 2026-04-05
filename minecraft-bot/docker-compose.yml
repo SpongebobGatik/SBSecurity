@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  minecraft-bot:
+    build: .
+    container_name: minecraft-bot
+    restart: always
+    ports:
+      - "10020:10020"
+      - "25565:25565"
+      - "4711:4711"
+    environment:
+      - TELEGRAM_TOKEN=${TELEGRAM_TOKEN}
+    volumes:
+      - ./cryptomine:/app/cryptomine
