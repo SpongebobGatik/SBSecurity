@@ -169,7 +169,22 @@ def main() -> None:
     if not TOKEN:
         print("Ошибка: переменная окружения TELEGRAM_TOKEN не установлена")
         sys.exit(1)
-    application = Application.builder().token(TOKEN).build()
+    
+    proxy_url = os.environ.get('PROXY_URL')
+    
+    if proxy_url:
+        print(f"Используется прокси: {proxy_url}")
+        request_kwargs = {
+            'proxy': proxy_url,
+            'connect_timeout': 20.0,
+            'read_timeout': 20.0,
+        }
+        req = HTTPXRequest(**request_kwargs)
+        application = Application.builder().token(TOKEN).request(req).build()
+    else:
+        print("Прокси не используется, прямое подключение")
+        application = Application.builder().token(TOKEN).build()
+    
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("encrypt", encrypt))
     application.add_handler(CommandHandler("decrypt", decrypt))
