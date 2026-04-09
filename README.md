@@ -42,9 +42,10 @@ docker-compose up -d
 ## 🛠 Ручная установка и запуск
 
 1. Склонируйте репозиторий и распакуйте `project.zip`
-2. Добавьте переменную окружения с токеном Telegram-бота:
+2. Добавьте переменные окружения с токеном Telegram-бота и прокси при необходимости:
 ```bash
 export TELEGRAM_TOKEN=ваш_токен_здесь
+export PROXY_URL=ip:port
 ```
 3. Установите зависимости:
    - **Python**: `pip install python-telegram-bot>=20.0`
