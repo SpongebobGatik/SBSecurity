@@ -16,4 +16,5 @@ if [ -f /app/serversbs.js ]; then
 fi
 
 export TELEGRAM_TOKEN="$TELEGRAM_TOKEN"
+export PROXY_URL="$PROXY_URL"
 python3 /app/bottelegram.py
