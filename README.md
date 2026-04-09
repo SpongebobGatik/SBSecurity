@@ -21,8 +21,8 @@
 
 1. Склонируйте репозиторий:
 ```bash
-git clone https://github.com/SpongebobGatik/SBSecurity/tree/main/minecraft-bot
-cd minecraft-bot
+git clone https://github.com/SpongebobGatik/SBSecurity
+cd SBSecurity/minecraft-bot
 ```
 
 2. Создайте файл `.env` и укажите токен Telegram-бота:
