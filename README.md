@@ -28,7 +28,7 @@ cd SBSecurity/minecraft-bot
 2. Создайте файл `.env` и укажите токен Telegram-бота:
 ```
 TELEGRAM_TOKEN=ваш_токен_здесь
-PROXY_URL=ip:port
+PROXY_URL=socks5://ip:port
 ```
 
 3. Соберите и запустите образ:
