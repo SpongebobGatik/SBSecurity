@@ -3,9 +3,7 @@ import sys
 import os
 from telegram import Update, ForceReply
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
-from telegram.request import HTTPXRequest
 import socket
-import os
 from datetime import datetime, timedelta
 from queue import Queue
 from threading import Thread
