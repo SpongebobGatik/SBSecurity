@@ -143,6 +143,6 @@ const server = net.createServer((socket) => {
   });
 });
 
-server.listen(10020, 'localhost', () => {
-  console.log('Сервер запущен на порту 10020');
+server.listen(10020, '0.0.0.0', () => {
+  console.log('Сервер запущен на порту 10020 (IPv4)');
 });
