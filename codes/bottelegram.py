@@ -3,7 +3,6 @@ import sys
 import os
 from telegram import Update, ForceReply
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
-from telegram.request import HTTPXRequest
 import socket
 from datetime import datetime, timedelta
 from queue import Queue
@@ -172,18 +171,15 @@ def main() -> None:
     
     proxy_url = os.environ.get('PROXY_URL')
     
+    app_builder = Application.builder().token(TOKEN)
+    
     if proxy_url:
         print(f"Используется прокси: {proxy_url}")
-        request_kwargs = {
-            'proxy': proxy_url,
-            'connect_timeout': 20.0,
-            'read_timeout': 20.0,
-        }
-        req = HTTPXRequest(**request_kwargs)
-        application = Application.builder().token(TOKEN).request(req).build()
+        app_builder = app_builder.proxy(proxy_url).get_updates_proxy(proxy_url)
     else:
         print("Прокси не используется, прямое подключение")
-        application = Application.builder().token(TOKEN).build()
+    
+    application = app_builder.build()
     
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("encrypt", encrypt))
